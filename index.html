@@ -10,9 +10,9 @@
 <meta property="og:title" content="Distributary for Debian 14">
 <meta property="og:description" content="Distributary, an artwork proposal for Debian 14 “forky”: a river that splits into a delta of forks, grown by a program. Eight colours, dark and light, HDR, a palette editor in the browser, and wallpapers for every screen.">
 <meta property="og:url" content="https://samueloph.dev/debian-distributary-theme/">
-<meta property="og:image" content="https://samueloph.dev/debian-distributary-theme/img/hero-dark.jpg">
-<meta property="og:image:width" content="2400">
-<meta property="og:image:height" content="1350">
+<meta property="og:image" content="https://samueloph.dev/debian-distributary-theme/img/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -433,7 +433,7 @@
         byte-identical files. <code>make check</code> also renders the SVGs in four renderers and compares them.</p></div>
     </div>
     <h3 style="font:italic 300 clamp(26px,3.2vw,36px)/1.15 var(--display);margin-top:28px">Fork your own wallpaper</h3>
-    <p style="max-width:64ch">In your browser, the <a href="editor/index.html?v=24f09355a2">palette editor</a> recolours the river
+    <p style="max-width:64ch">In your browser, the <a href="editor/index.html?v=af7170b6f2">palette editor</a> recolours the river
       live or randomizes a variation of your own, and gives you the wallpaper as a PNG and the palette as JSON. To
       build the whole theme, clone the program and change <code>design.py</code>, or hand it that JSON.</p>
     <p><a href="https://salsa.debian.org/samueloph/distributary">salsa.debian.org/samueloph/distributary</a>
@@ -485,7 +485,7 @@ SIZES=1920x1080 ./build.py raster  # and PNGs, dark and light, at your screen's 
     <p class="muted" style="max-width:64ch">Without the accent on the fork, the water keeps one colour from the source
       to the first forks, and nothing is brighter than white. Colours that follow the river, like Lineage's red, are
       measured along the water from its source, so they land on the same channels on every screen shape.</p>
-    <p style="max-width:64ch">Or <a href="editor/index.html?v=24f09355a2">fork your own wallpaper</a> in the palette editor: start
+    <p style="max-width:64ch">Or <a href="editor/index.html?v=af7170b6f2">fork your own wallpaper</a> in the palette editor: start
       from any colour here, change anything, or randomize.</p>
     <div class="gallery" id="gallery"></div>
     <noscript><p class="muted">The colour previews need JavaScript.</p></noscript>
@@ -505,7 +505,7 @@ SIZES=1920x1080 ./build.py raster  # and PNGs, dark and light, at your screen's 
   </footer>
 </main>
 
-<script src="schemes/index.js?v=24f09355a2"></script>
+<script src="schemes/index.js?v=af7170b6f2"></script>
 <script>
   (function () {
     var body = document.body;
@@ -679,7 +679,7 @@ SIZES=1920x1080 ./build.py raster  # and PNGs, dark and light, at your screen's 
     // the palette editor, as one more choice among the colours
     var own = document.createElement("a");
     own.className = "own";
-    own.href = "editor/index.html?v=24f09355a2";
+    own.href = "editor/index.html?v=af7170b6f2";
     own.setAttribute("aria-label", "Fork your own wallpaper in the palette editor, or randomize one");
     own.title = "Fork your own wallpaper in the palette editor, or randomize one";
     // sliders and a die: set the colours, or roll them
