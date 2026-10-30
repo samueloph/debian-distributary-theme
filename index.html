@@ -211,7 +211,7 @@
 <header class="hero">
   <div class="stage" id="stage">
     <picture class="v-dark">
-      <source type="image/avif" srcset="img/hero-dark.gainmap.avif" data-img="hero-dark.gainmap.avif" data-own>
+      <source type="image/avif" data-img="hero-dark.gainmap.avif" data-own>
       <img data-img="hero-dark.jpg" src="img/hero-dark.jpg" width="2400" height="1350"
            alt="Distributary, dark: a river enters from the left and forks at a point of light on the left third; the delta spreads to the right over dark land with faint contour lines.">
     </picture>
@@ -297,12 +297,12 @@
       fork is already lit by mid-boot, even when Plymouth quits before reporting 100%. It comes dark, with a light
       alternative; the Dark and Light switch at the top of the page shows either.</p>
     <figure>
-      <video class="clip when-dark" muted loop playsinline preload="metadata" poster="img/poster-plymouth.jpg" data-autoplay width="1920" height="1080"
+      <video class="clip when-dark" muted loop playsinline preload="none" poster="img/poster-plymouth.jpg" data-autoplay width="1920" height="1080"
              aria-label="The boot splash: the Debian logo, the river growing and forking under it, a passphrase prompt, then the login screen.">
         <source src="media/plymouth-boot-1080p.mp4" type='video/mp4; codecs="av01.0.09M.10"'>
         <source src="media/plymouth-boot-1080p-h264.mp4" type="video/mp4">
       </video>
-      <video class="clip when-light" muted loop playsinline preload="metadata" poster="img/poster-plymouth-light.jpg" data-autoplay width="1920" height="1080"
+      <video class="clip when-light" muted loop playsinline preload="none" poster="img/poster-plymouth-light.jpg" data-autoplay width="1920" height="1080"
              aria-label="The light boot splash: the Debian logo, the river growing and forking under it, a passphrase prompt, then the light login screen.">
         <source src="media/plymouth-boot-light-1080p.mp4" type='video/mp4; codecs="av01.0.09M.10"'>
         <source src="media/plymouth-boot-light-1080p-h264.mp4" type="video/mp4">
@@ -354,7 +354,7 @@
       GRUB to the desktop, runs as one take.</p>
     <div class="grid-2">
       <figure>
-        <video class="clip" muted loop playsinline preload="metadata" poster="img/poster-growth.jpg" data-autoplay width="1920" height="1080"
+        <video class="clip" muted loop playsinline preload="none" poster="img/poster-growth.jpg" data-autoplay width="1920" height="1080"
                aria-label="The delta drawing itself from its source.">
           <source src="media/river-growth-1080p.mp4" type='video/mp4; codecs="av01.0.09M.10"'>
           <source src="media/river-growth-1080p-h264.mp4" type="video/mp4">
@@ -362,7 +362,7 @@
         <figcaption><b>Growth.</b> The delta drawing itself from its source.</figcaption>
       </figure>
       <figure>
-        <video class="clip" muted loop playsinline preload="metadata" poster="img/poster-boot.jpg" data-autoplay width="1920" height="1080"
+        <video class="clip" muted loop playsinline preload="none" poster="img/poster-boot.jpg" data-autoplay width="1920" height="1080"
                aria-label="Power-on to desktop: GRUB, the boot splash, the login screen and the desktop.">
           <source src="media/boot-to-desktop-1080p.mp4" type='video/mp4; codecs="av01.0.09M.10"'>
           <source src="media/boot-to-desktop-1080p-h264.mp4" type="video/mp4">
@@ -433,7 +433,7 @@
         byte-identical files. <code>make check</code> also renders the SVGs in four renderers and compares them.</p></div>
     </div>
     <h3 style="font:italic 300 clamp(26px,3.2vw,36px)/1.15 var(--display);margin-top:28px">Fork your own wallpaper</h3>
-    <p style="max-width:64ch">In your browser, the <a href="editor/index.html?v=4f79dc522a">palette editor</a> recolours the river
+    <p style="max-width:64ch">In your browser, the <a href="editor/index.html?v=8938293b03">palette editor</a> recolours the river
       live or randomizes a variation of your own, and gives you the wallpaper as a PNG and the palette as JSON. To
       build the whole theme, clone the program and change <code>design.py</code>, or hand it that JSON.</p>
     <p><a href="https://salsa.debian.org/samueloph/distributary">salsa.debian.org/samueloph/distributary</a>
@@ -485,7 +485,7 @@ SIZES=1920x1080 ./build.py raster  # and PNGs, dark and light, at your screen's 
     <p class="muted" style="max-width:64ch">Without the accent on the fork, the water keeps one colour from the source
       to the first forks, and nothing is brighter than white. Colours that follow the river, like Lineage's red, are
       measured along the water from its source, so they land on the same channels on every screen shape.</p>
-    <p style="max-width:64ch">Or <a href="editor/index.html?v=4f79dc522a">fork your own wallpaper</a> in the palette editor: start
+    <p style="max-width:64ch">Or <a href="editor/index.html?v=8938293b03">fork your own wallpaper</a> in the palette editor: start
       from any colour here, change anything, or randomize.</p>
     <div class="gallery" id="gallery"></div>
     <noscript><p class="muted">The colour previews need JavaScript.</p></noscript>
@@ -505,7 +505,7 @@ SIZES=1920x1080 ./build.py raster  # and PNGs, dark and light, at your screen's 
   </footer>
 </main>
 
-<script src="schemes/index.js?v=4f79dc522a"></script>
+<script src="schemes/index.js?v=8938293b03"></script>
 <script>
   (function () {
     var body = document.body;
@@ -624,6 +624,10 @@ SIZES=1920x1080 ./build.py raster  # and PNGs, dark and light, at your screen's 
 
     // -- the whole page in another colour, with or without the accent on the fork
     function esc(t) { var d = document.createElement("div"); d.textContent = t; return d.innerHTML; }
+    function playClip(v) {
+      if (still || v.controls) return;
+      var p = v.play(); if (p && p.catch) p.catch(function () {});
+    }
     var list = document.getElementById("colour-list");
     var gallery = document.getElementById("gallery");
     ORDER.forEach(function (k) {
@@ -675,7 +679,7 @@ SIZES=1920x1080 ./build.py raster  # and PNGs, dark and light, at your screen's 
     // the palette editor, as one more choice among the colours
     var own = document.createElement("a");
     own.className = "own";
-    own.href = "editor/index.html?v=4f79dc522a";
+    own.href = "editor/index.html?v=8938293b03";
     own.setAttribute("aria-label", "Fork your own wallpaper in the palette editor, or randomize one");
     own.title = "Fork your own wallpaper in the palette editor, or randomize one";
     // sliders and a die: set the colours, or roll them
@@ -736,19 +740,25 @@ SIZES=1920x1080 ./build.py raster  # and PNGs, dark and light, at your screen's 
       }
       function pic(name) { return from("img", name, function (v) { return v.images; }); }
       function clip(file) { return from("media", file, function (v) { return v.media || []; }); }
-      // every colour has its own videos, next to its pictures
+      // every colour has its own videos, next to its pictures; a clip on
+      // screen loads its new files now, one off screen when it scrolls in
+      // (loading all four at every switch is what makes phones stutter)
       document.querySelectorAll("video.clip").forEach(function (vid) {
         if (!vid.dataset.poster) vid.dataset.poster = vid.getAttribute("poster").replace(/^img\//, "");
         vid.setAttribute("poster", pic(vid.dataset.poster));
+        var changed = false;
         vid.querySelectorAll("source").forEach(function (src) {
           if (!src.dataset.file) src.dataset.file = src.getAttribute("src").replace(/^media\//, "");
-          src.setAttribute("src", clip(src.dataset.file));
+          var to = clip(src.dataset.file);
+          if (src.getAttribute("src") !== to) { src.setAttribute("src", to); changed = true; }
         });
-        vid.load();
+        if (!changed) return;
+        if (vid.dataset.inView === "1") { vid.load(); playClip(vid); }
+        else vid.dataset.stale = "1";
       });
       document.querySelectorAll("[data-img]").forEach(function (el) {
         var name = el.getAttribute("data-img");
-        var missing = !proposed && el.hasAttribute("data-own") && shown(modeOf(name)).images.indexOf(name) < 0;
+        var missing = el.hasAttribute("data-own") && shown(modeOf(name)).images.indexOf(name) < 0;
         if (el.tagName !== "SOURCE") el.setAttribute("src", pic(name));
         else if (missing) el.removeAttribute("srcset");
         else el.setAttribute("srcset", pic(name));
@@ -884,12 +894,18 @@ SIZES=1920x1080 ./build.py raster  # and PNGs, dark and light, at your screen's 
     // the viewer prefers reduced motion; then they get controls instead
     var clips = document.querySelectorAll("video[data-autoplay]");
     if (still || !("IntersectionObserver" in window)) {
-      clips.forEach(function (v) { v.controls = true; });
+      clips.forEach(function (v) {
+        v.controls = true; v.dataset.inView = "1";
+        if (v.dataset.stale) { v.dataset.stale = ""; v.load(); }
+      });
     } else {
       var io = new IntersectionObserver(function (entries) {
         entries.forEach(function (e) {
-          if (e.isIntersecting) { var p = e.target.play(); if (p && p.catch) p.catch(function () {}); }
-          else { e.target.pause(); }
+          var v = e.target;
+          v.dataset.inView = e.isIntersecting ? "1" : "";
+          if (!e.isIntersecting) { v.pause(); return; }
+          if (v.dataset.stale) { v.dataset.stale = ""; v.load(); }
+          playClip(v);
         });
       }, { threshold: 0.4 });
       clips.forEach(function (v) { io.observe(v); });
